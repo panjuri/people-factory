@@ -7,6 +7,20 @@ const renderColor = (hairColor) => {
     colorDiv.style.width = '100px'
     return colorDiv
 }
+const renderitem = (name, value) => {
+    const item =document.createElement ('li')
+    item.textContent = `${name}: ${value}`
+    return item
+}
+const renderlist = (person) => {
+    const list = document.createElement('ul')
+    Array.from(person).map((input, _i, _formElement) => {
+        const li = renderlist(input.name, input.value)
+        list.appendChild(li)
+    })
+    return list
+} 
+
 const handleSubmit = (ev) => {
     ev.preventDefault()
     const form = ev.target
@@ -28,11 +42,10 @@ const handleSubmit = (ev) => {
     const placebirth = document.createElement('li')
     placebirth.textContent = birthplace 
 
-    
-
     details.appendChild(name)
     details.appendChild(colorDiv)
     details.appendChild(years)
     details.appendChild(placebirth)
     }
 personForm.addEventListener('submit',handleSubmit)
+
